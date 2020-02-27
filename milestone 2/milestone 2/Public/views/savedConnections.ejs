@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Saved Coneection</title>
+  <link href="/assets/stylesheets/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <!-- Header start for Saved connections -->
+  <%- include ('partials/header.ejs') %>
+  <!-- Header end for New connection -->
+
+  <!-- navigation start for Saved connections-->
+  <%- include ('partials/navigation.ejs') %>
+  <!-- navigation end for Saved connections-->
+
+  <!-- main start for Saved connections -->
+  <main>
+    <div class="div_table"> 
+      <header> User's connections</header>
+      <table>
+        <tr>
+          <th>Connections</th>
+          <th>Category</th>
+          <th>Going?</th>
+          <th> </th>
+        </tr>
+        <tr>
+          <td>Chandrashila Trek</td>
+          <td>Trek</td>
+          <td>Yes</td>
+          <td><button class="sc_button" onclick="window.location.href = 'connection';">Update</button>
+            <button class="sc_button" onclick="window.location.href = 'savedconnections';">Delete</button></td>
+        </tr>
+        <tr>
+          <td>Gaumukh Tapovan </td>
+          <td>Trek</td>
+          <td>Maybe</td>
+          <td><button class="sc_button" onclick="window.location.href = 'connection';">Update</button>
+            <button class="sc_button" onclick="window.location.href = 'savedconnections';">Delete</button></td>
+        </tr>
+      </table>
+    </div>
+  </main>
+  <!-- main end for Saved connections -->
+
+  <!-- footer start for Saved connections -->
+  <%- include ('partials/footer.ejs') %>
+  <!-- footer end for Saved connections -->
+</body>
+
+</html>

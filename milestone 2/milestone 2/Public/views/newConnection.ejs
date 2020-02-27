@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>New Connections</title>
+  <link href="/assets/stylesheets/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <!-- Header start for New connection -->
+  <%- include ('partials/header.ejs') %>
+  <!-- Header end for New connection -->
+
+  <!-- navigation start for New connection -->
+  <%- include ('partials/navigation.ejs') %>
+  <!-- navigation end for New connection -->
+
+  <!-- main start for New connection -->
+  <main>
+    <section>
+      <form id="contact-form" class="form_nc">
+        <div class="form_format">
+          <div class="form_div">
+            <label for="Topic">Topic</label>
+            <input id="Topic" type="text" placeholder="Topic">
+          </div>
+          <div class="form_div">
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Name">
+          </div>
+          <div class="form_div">
+            <label for="details">Details</label>
+            <input id="details" type="text" class="desc" placeholder="Description">
+          </div>
+          <div class="form_div">
+            <label for="where">Where</label>
+            <input type="text" id="where" placeholder="Location">
+          </div>
+          <div class="form_div">
+            <label for="when">When</label>
+            <input type="text" id="when" placeholder="mm/dd/yyyy, hh:mm">
+          </div>
+          <div class="form_div_1">
+            <input type="submit" class="submit_bttn" value="Create Connection" onclick="window.location.href = 'newConnection';" />
+          </div>
+        </div>
+      </form>
+    </section>
+  </main>
+  <!-- main end for New connection -->
+
+  <!-- footer start for New connection -->
+  <%- include ('partials/footer.ejs') %>
+  <!-- footer end for New connection -->
+</body>
+
+</html>
