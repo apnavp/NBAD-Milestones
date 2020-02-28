@@ -114,16 +114,6 @@ var Zero = {
 };
 
 
-var Himalaya = {
-  connectionID: "TK5",
-  connection_name: "Himalaya",
-  connection_category: "Trek",
-  hosted_by: "Kennedy John",
-  start_location: "Srinagar",
-  dateAndTime: "Mar 05,  5pm",
-  details: "The Himalayas, or Himalaya, is a mountain range in Asia separating the plains of the Indian subcontinent from the Tibetan Plateau. The range has many of Earth's highest peaks, including the highest, Mount Everest.",
-  imageurl: '../assets/images/man.png'
-};
 
 // data storing for database end for all categories and topics
 
@@ -137,7 +127,6 @@ var allConnections = [
   Adventures,
   Hornbill,
   Zero,
-  Himalaya
 ];
 
 // get connections function start
