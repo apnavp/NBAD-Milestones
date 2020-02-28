@@ -19,7 +19,7 @@ app.use('/newConnection', newConnection);
 app.use('/connections', connections);
 app.use('/connection', connection);
 app.use('/savedconnections', savedconnections);
-app.use('/', index);
+app.use('/*', index);
 app.use('/about', about);
 app.use('/contact', contact);
 
