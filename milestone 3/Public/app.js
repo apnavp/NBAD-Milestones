@@ -23,7 +23,9 @@ app.set('view engine', 'ejs');
 app.use('/assets', express.static('assets'));
 
 app.use(session({
-  secret: 'thisISSecret'
+  secret: 'Milestone',
+  resave:false,
+  saveUninitialized:true
 }));
 //custom route implementation
 
