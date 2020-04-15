@@ -4,16 +4,6 @@ class UserProfile {
   constructor(UserID) {
     this.UserID = UserID;
     this.UserConnections = [];
-    this.OnLoadConnection();
-  }
-
-  OnLoadConnection() {
-    var connection1 = connectionDB.getConnection('TK1');
-    var addConnection1 = new UserConnectionObject(connection1, 'YES');
-    this.UserConnections.push(addConnection1);
-    var connection2 = connectionDB.getConnection('TP2');
-    var addConnection2 = new UserConnectionObject(connection2, 'NO');
-    this.UserConnections.push(addConnection2);
   }
 
   addConnection(Connection, RSVP) {
@@ -55,10 +45,6 @@ class UserProfile {
     return this.UserConnections;
   }
 
-
-  emptyProfile() {
-    this.UserConnections.length = 0;
-  }
 }
 
 module.exports = UserProfile;
