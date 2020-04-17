@@ -20,7 +20,6 @@ var connectionSchema = new Schema({
 
 // data storing for database start for all categories and topics
 
-
 var connectionDB = mongoose.model('connections',connectionSchema);
 
 mongoose.connect('mongodb://localhost/traveller', {useNewUrlParser: true});
@@ -28,7 +27,7 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
   console.log("we are connected with Traveller database")
-});
+},{useUnifiedTopology: true});
 
 
 
@@ -127,7 +126,7 @@ db.once('open', function() {
 
 // };
 
-// //data for DealCloud
+// //data for ziro
 
 // var Zero = {
 //   connectionID: "TP4",
@@ -156,8 +155,10 @@ db.once('open', function() {
 // ];
 
 // get connections function start
-var getConnections = async function() {
+var getConnections = function() {
+  console.log(connectionDB.find());
   return new Promise(resolve =>{
+    console.log(connectionDB);
     resolve(connectionDB.find().then(function(allConnections){
     console.log("ingetconnections"+allConnections);
     var myList = [];
@@ -183,19 +184,20 @@ var getConnections = async function() {
 
 // get connection function start
 var getConnection = async function(connectionID) {
+
   return await connectionDB.find({connectionID:connectionID}).then(function(detailedConnection){
-  console.log(connectionID);
-  for (i = 0; i < allConnections.length; i++) {
-    if (allConnections[i].connectionID == connectionID) {
+  console.log("this is connection is", connectionID);
+  for (i = 0; i < detailedConnection.length; i++) {
+    if (detailedConnection[i].connectionID == connectionID) {
       let connection = new connectionModel.connection(
-        allConnections[i].connectionID,
-        allConnections[i].connection_name,
-        allConnections[i].connection_category,
-        allConnections[i].hosted_by,
-        allConnections[i].start_location,
-        allConnections[i].dateAndTime,
-        allConnections[i].details,
-        allConnections[i].imageurl);
+        detailedConnection[i].connectionID,
+        detailedConnection[i].connection_name,
+        detailedConnection[i].connection_category,
+        detailedConnection[i].hosted_by,
+        detailedConnection[i].start_location,
+        detailedConnection[i].dateAndTime,
+        detailedConnection[i].details,
+        detailedConnection[i].imageurl);
       return connection;
     }
   }

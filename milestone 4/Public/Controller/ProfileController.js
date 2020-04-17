@@ -19,10 +19,10 @@ var urlencodedParser = bodyParser.urlencoded({
   extended: false
 });
 
-var sessionAssign=async function(req,res,next)
+var sessionAssign=async function(request,response,next)
 {
 
-    if(!req.session.theUser)
+    if(!request.session.theUser)
     {
       var users= await userDbUtil.getUser('Jason');
 
@@ -30,7 +30,7 @@ var sessionAssign=async function(req,res,next)
       {
 
         user= users;
-        req.session.theUser = user;
+        request.session.theUser = user;
 
          var findout=await userConnectionsDB.getUserProfile(user.UserID);
          var UserConnections=[];
@@ -41,13 +41,13 @@ var sessionAssign=async function(req,res,next)
            var addConnection = new UserConnectionObject(connection,findout[i].RSVP);
            UserConnections.push(addConnection);
          }
-        Profile = new userProfile( req.session.theUser.UserID);
+        Profile = new userProfile( request.session.theUser.UserID);
         Profile.UserConnections=UserConnections;
-        req.session.UserProfile= Profile;
+        request.session.UserProfile= Profile;
 
     }
       else {
-        res.render('index',{session:req.session.theUser});
+        response.render('index',{session:request.session.theUser});
       }
     }
 
@@ -67,7 +67,7 @@ router.all('/*', urlencodedParser,sessionAssign,async function(request, response
   if (!request.session.UserProfile) {
     console.log("no user profile here");
     response.render('login', {
-      session: req.session.theUser
+      session: request.session.theUser
     });
   } else {
     if (!request.query.action) {
@@ -91,8 +91,8 @@ router.all('/*', urlencodedParser,sessionAssign,async function(request, response
               if (formValue == undefined) {
                 Profile.UserConnections[i].RSVP = 'MAYBE';
                 Profile.updateRSVP(Profile.UserConnections[i]);
-                req.session.UserProfile = Profile;
-                res.render('savedConnections', {
+                request.session.UserProfile = Profile;
+                response.render('savedConnections', {
                   qs: request.session.UserProfile,
                   session: request.session.theUser
                 });
@@ -119,7 +119,7 @@ router.all('/*', urlencodedParser,sessionAssign,async function(request, response
         if (alreadyExist == 0) {
           var SingleConnection = await connectionDB.getConnection(connectionID);
           if (SingleConnection == null) {
-            res.render('savedConnections', {
+            response.render('savedConnections', {
               qs: request.session.UserProfile,
               session: request.session.theUser
             });
@@ -137,8 +137,8 @@ router.all('/*', urlencodedParser,sessionAssign,async function(request, response
               });
             } else {
               Profile.addConnection(SingleConnection, formValue);
-              req.session.UserProfile = Profile;
-              res.render('savedConnections', {
+              request.session.UserProfile = Profile;
+              response.render('savedConnections', {
                 qs: request.session.UserProfile,
                 session: request.session.theUser
               });
@@ -148,7 +148,7 @@ router.all('/*', urlencodedParser,sessionAssign,async function(request, response
       } else if (action == 'delete') {
         var deleteConnection = await connectionDB.getConnection(connectionID);
         if (deleteConnection == null) {
-          res.render('savedConnections', {
+          response.render('savedConnections', {
             qs: request.session.UserProfile,
             session: request.session.theUser
           });
@@ -160,7 +160,7 @@ router.all('/*', urlencodedParser,sessionAssign,async function(request, response
           for (var i = 0; i <= Profile.UserConnections.length - 1; i++) {
             console.log(Profile.UserConnections[i].Connection.connectionID);
           }
-          res.render('savedConnections', {
+          response.render('savedConnections', {
             qs: request.session.UserProfile,
             session: request.session.theUser
           });

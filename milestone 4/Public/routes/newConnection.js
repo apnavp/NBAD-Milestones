@@ -8,26 +8,26 @@ var userConnectionsDB=require('../utility/UserConnectionDB.js')
 var urlencodedParser = bodyParser.urlencoded({extended :false});
 
 
-router.all('/',urlencodedParser,function(req,res){
-  if(req.session.theUser)
+router.all('/',urlencodedParser,function(request,response){
+  if(request.session.theUser)
   {
     console.log("in new info jiljil");
-    console.log(req.body.topic);
+    console.log(request.body.topic);
     var inserted=null;
-    if(req.body.topic!=undefined){
-      userConnectionsDB.addConnection(req.body,req.session.theUser.UserID).then(function(){
+    if(request.body.topic!=undefined){
+      userConnectionsDB.addConnection(request.body,request.session.theUser.UserID).then(function(){
         inserted=true;
-        res.render('newConnection',{session:req.session.theUser,inserted:inserted});
+        response.render('newConnection',{session:request.session.theUser,inserted:inserted});
       })
     }
     else{
-      res.render('newConnection',{session:req.session.theUser,inserted:inserted});
+      response.render('newConnection',{session:request.session.theUser,inserted:inserted});
     }
 
   }
 
-  else if(!req.session.theUser){
-    res.render('index',{session:undefined});
+  else if(!request.session.theUser){
+    response.render('index',{session:undefined});
   }
 })
 

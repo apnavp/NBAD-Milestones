@@ -3,7 +3,7 @@
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
-mongoose.connect('mongodb://localhost:27017/carrers',{useNewUrlParser: true});
+// mongoose.connect('mongodb://localhost:27017/traveller',{useNewUrlParser: true});
 var schema = mongoose.Schema;
 
 var userSchema = new schema({

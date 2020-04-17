@@ -19,7 +19,14 @@
   <!-- main start for New connection -->
   <main>
     <section>
-      <form id="contact-form" class="form_nc">
+      <div >
+        <%if(inserted){%>
+            <div >
+              INSERTED
+            </div>
+
+        <%}%>
+      <form id="contact-form" class="form_nc" method="post" action="newConnection">
         <!-- <div class="form_format"> -->
         <div class="form_div">
           <label for="Topic">Topic</label>
@@ -42,7 +49,7 @@
           <input type="text" id="when" placeholder="mm/dd/yyyy, hh:mm">
         </div>
         <div class="form_div">
-          <input type="submit" class="submit_bttn" value="Create Connection" onclick="window.location.href = 'newConnection';" />
+          <input type="submit" class="submit_bttn" />
         </div>
         <!-- </div> -->
       </form>
