@@ -1,0 +1,13 @@
+﻿>use traveller
+> db.createCollection('connections')
+>db.createCollection('users')
+>db.connections.insert({
+... 'connectionID': "TK1",
+... 'connection_name': "Chandrashila",
+... 'connection_category': "Trek",
+... 'hosted_by': "John Doe",
+... 'start_location': "Delhi",
+... 'dateAndTime': "Jan 31,  5pm",
+... 'details': "Chandrashila is summit of the Tungnath . It literally means \"Moon Rock\". It is located at a height of about 4,000 metres (13,000 ft) above sea level. This peak provides views of the Himalayas, including Nandadevi, Trisul, Kedar Peak, Bandarpunch and Chaukhamba peaks. There are various legends associated with this place. According to one such legend, this is the place where Lord Rama meditated after defeating the demon-king Ravana. Another legend says that moon-god Chandra spent time here in penance.",
+... 'imageurl': '../assets/images/man.png'
+... })
