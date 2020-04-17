@@ -7,7 +7,7 @@ var session = require('express-session');
 var userProfile = require('../model/userprofile');
 var connectionDB = require('../utility/connectionDB');
 var UserConnectionObject= require('../model/UserConnection.js');
-var userConnectionsDB=require('../utility/UserProfileDB.js');
+var userProfileDB=require('../utility/UserProfileDB.js');
 
 app.use(session({
   secret: 'my express secret',
@@ -55,7 +55,7 @@ router.all('/*', urlencodedParser,async function(request, response) {
             if (Profile.UserConnections[i].RSVP != formValue) {
               if (formValue == undefined) {
                 Profile.UserConnections[i].RSVP = 'MAYBE';
-                userConnectionsDB.updateRSVP(connectionID,request.session.theUser.UserID,formValue);
+                userProfileDB.updateRSVP(connectionID,request.session.theUser.UserID,formValue);
                 Profile.updateRSVP(Profile.UserConnections[i]);
                 request.session.UserProfile = Profile;
                 response.render('savedConnections', {
@@ -64,7 +64,7 @@ router.all('/*', urlencodedParser,async function(request, response) {
                 });
               } else {
                 Profile.UserConnections[i].RSVP = formValue;
-                userConnectionsDB.updateRSVP(connectionID,request.session.theUser.UserID,formValue);
+                userProfileDB.updateRSVP(connectionID,request.session.theUser.UserID,formValue);
                 Profile.updateRSVP(Profile.UserConnections[i]);
                 request.session.UserProfile = Profile;
                 console.log(Profile);
@@ -96,7 +96,7 @@ router.all('/*', urlencodedParser,async function(request, response) {
             console.log(formValue);
             if (formValue == undefined) {
               formValue = 'MAYBE';
-              userConnectionsDB.addRSVP(connectionID,request.session.theUser.UserID,formValue);
+              userProfileDB.addRSVP(connectionID,request.session.theUser.UserID,formValue);
               Profile.addConnection(SingleConnection, formValue);
               request.session.UserProfile = Profile;
               response.render('savedConnections', {
@@ -104,7 +104,7 @@ router.all('/*', urlencodedParser,async function(request, response) {
                 session: request.session.theUser
               });
             } else {
-              userConnectionsDB.addRSVP(connectionID,request.session.theUser.UserID,formValue);
+              userProfileDB.addRSVP(connectionID,request.session.theUser.UserID,formValue);
               Profile.addConnection(SingleConnection, formValue);
               request.session.UserProfile = Profile;
               response.render('savedConnections', {
@@ -124,7 +124,7 @@ router.all('/*', urlencodedParser,async function(request, response) {
           console.log("not there");
         } else {
           console.log("in delete");
-          userConnectionsDB.removeConnection(connectionID,request.session.theUser.UserID);
+          userProfileDB.removeConnection(connectionID,request.session.theUser.UserID);
           Profile.removeConnection(deleteConnection);
           request.session.UserProfile = Profile;
           for (var i = 0; i <= Profile.UserConnections.length - 1; i++) {

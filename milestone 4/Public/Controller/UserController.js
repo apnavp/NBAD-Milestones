@@ -38,18 +38,13 @@ var sessionAssign=async function(request,response,next)
         Profile = new userProfile( request.session.theUser.UserID);
         Profile.UserConnections=UserConnections;
         request.session.UserProfile= Profile;
-
     }
       else {
         response.render('index',{session:request.session.theUser});
       }
     }
-
     next();
 }
-
-
-
 
 router.get('/', function(request, response) {
   response.render('login', {

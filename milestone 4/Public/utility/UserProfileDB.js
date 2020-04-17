@@ -55,7 +55,6 @@ module.exports.addRSVP= function(connectionID, UserID, rsvp)
     }
   })
   )
-
 });
 
 };
