@@ -2,7 +2,6 @@ var express = require('express');
 var session = require('express-session');
 var app = express();
 var bodyParser = require('body-parser');
-var connectionDB=require('./utility/connectionDB');
 var bodyParser = require('body-parser');
 var connections = require('./routes/connections');
 var about = require('./routes/about');

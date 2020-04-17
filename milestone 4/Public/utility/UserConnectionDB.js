@@ -1,4 +1,4 @@
-var connection=require('./connectionDB.js')
+﻿var connection=require('./connectionDB.js');
 var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
@@ -71,6 +71,7 @@ module.exports.addConnection= function(connection,hostedby){
   ans += Math.random().toString(36).slice(5);
   var bns=ans.slice(0,4);
   console.log("in random"+ans +"  "+bns);
+  console.log(connection.details);
   return new Promise(resolve =>{
   resolve(connectionDB.find({connectionID:ans},function(err,d){
     if(d.length === 0){
@@ -82,16 +83,11 @@ module.exports.addConnection= function(connection,hostedby){
       start_location :connection.start_location,
       dateAndTime :connection.dateAndTime,
       details: connection.details,
-      imageurl:connection.imageurl,
+      imageurl:"../assets/images/man.png",
     }
     var data = new connectionDB(addObject)
     data.save()
     return "yes";
-  }
-  })
-  )
-}
-)
-
-  })
+  }}))
+})
 }
