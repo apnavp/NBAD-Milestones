@@ -15,6 +15,8 @@ router.get('/', function(request, response) {
 });
 
 router.post('/', urlencodedParser, function(request, response) {
+  console.log("this is request body under login");
+  console.log(request.body);
   var user = require('../model/User');
   users = new user(request.body.login, null, null, null, null, null, null, null, null, null);
   console.log(users);

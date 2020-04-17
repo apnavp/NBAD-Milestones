@@ -15,8 +15,11 @@ router.get('/', function(request, response) {
 });
 
 router.post('/', urlencodedParser, function(request, response) {
+  console.log("inside login post");
+  console.log("this is request body in login"+request.body);
   var user = require('../model/User');
-  users = new user(request.body.login, null, null, null, null, null, null, null, null, null);
+
+  users = new user(request.body, null, null, null, null, null, null, null, null, null);
   console.log(users);
   user.UserID = request.body.login;
   request.session.theUser = users;

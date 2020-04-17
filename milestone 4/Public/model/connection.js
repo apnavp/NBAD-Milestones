@@ -1,12 +1,12 @@
 module.exports.connection = class connection {
   constructor(connectionID, connection_name, connection_category, hosted_by,
-    start_location, date_and_time, details, imageurl) {
+    start_location, dateAndTime, details, imageurl) {
     this.connectionID = connectionID;
     this.connection_name = connection_name;
     this.connection_category = connection_category;
     this.hosted_by = hosted_by;
     this.start_location = start_location;
-    this.date_and_time = date_and_time;
+    this.dateAndTime = dateAndTime;
     this.details = details;
     this.imageurl = imageurl;
   }
@@ -51,10 +51,10 @@ module.exports.connection = class connection {
   }
 
   get getDateAndTime() {
-    return this.date_and_time;
+    return this.dateAndTime;
   }
   set setDateAndTime(dateAndTime) {
-    this.date_and_time = dateAndTime;
+    this.dateAndTime = dateAndTime;
   }
 
   get Details() {

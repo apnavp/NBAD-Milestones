@@ -12,7 +12,7 @@ var connectionSchema = new Schema({
   connection_category :String,
   hosted_by :String,
   start_location :String,
-  date_and_time :String,
+  dateAndTime :String,
   details: String,
   imageurl:String
   }

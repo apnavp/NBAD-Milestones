@@ -26,30 +26,35 @@
             </div>
 
         <%}%>
-      <form id="contact-form" class="form_nc" method="post" action="newConnection">
+      <form id="contact-for" class="form_nc" method="POST" action="newConnection">
         <!-- <div class="form_format"> -->
         <div class="form_div">
-          <label for="Topic">Topic</label>
-          <input id="Topic" type="text" placeholder="Topic">
+          <label for="Topic">Name of event</label>
+          <input id="connection_name" type="text" name="connection_name" >
         </div>
         <div class="form_div">
-          <label for="name">Name</label>
-          <input type="text" id="name" placeholder="Name">
+          <label for="name">Category</label>
+          <select id="connection_category" required name="connection_category">
+            <option value="" disabled selected>Choose one</option>
+            <option value="Trek">Trek</option>
+            <option value="Trip">Trip</option>
+          </select>
         </div>
         <div class="form_div">
-          <label for="details">Details</label>
-          <input id="details" type="text" class="desc" placeholder="Description">
+          <label for="details">Start Location</label>
+          <input id="start_location" type="text" placeholder="Start location"  name="start_location" >
         </div>
         <div class="form_div">
-          <label for="where">Where</label>
-          <input type="text" id="where" placeholder="Location">
+          <label for="when">Date and time</label>
+          <input type="text" id="dateAndTime" placeholder="mm/dd/yyyy, hh:mm" name="dateAndTime">
         </div>
         <div class="form_div">
-          <label for="when">When</label>
-          <input type="text" id="when" placeholder="mm/dd/yyyy, hh:mm">
+          <label for="where">Details</label>
+          <input type="text" id="Details" placeholder="Location" name="Details">
         </div>
+
         <div class="form_div">
-          <input type="submit" class="submit_bttn" />
+          <input type="submit" class="submit_bttn" value="submit" />
         </div>
         <!-- </div> -->
       </form>

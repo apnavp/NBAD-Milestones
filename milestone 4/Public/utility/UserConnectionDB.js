@@ -66,24 +66,23 @@ module.exports.removeConnection = function(connectionID, UserID){
 });
 }
 
-module.exports.addConnection= function(connection,userid){
-    var ans = 'CT';
-        ans += Math.random().toString(36).slice(5);
-    var bns=ans.slice(0,6)
-    console.log("in random"+ans +"  "+bns);
+module.exports.addConnection= function(connection,hostedby){
+  var ans = connection.connection_category.slice(0,2).toUpperCase();
+  ans += Math.random().toString(36).slice(5);
+  var bns=ans.slice(0,4);
+  console.log("in random"+ans +"  "+bns);
   return new Promise(resolve =>{
-  resolve(connectionDB.find({connectionID:bns},function(err,d){
+  resolve(connectionDB.find({connectionID:ans},function(err,d){
     if(d.length === 0){
       var addObject = {
-        UserID:userid,
-      connectionID:bns,
-      companyName : connection.name,
-      typeOfJob: connection.topic,
+      connectionID :bns,
+      connection_name :connection.connection_name,
+      connection_category :connection.connection_category,
+      hosted_by :hostedby,
+      start_location :connection.start_location,
+      dateAndTime :connection.dateAndTime,
       details: connection.details,
-      host: connection.host,
-      location:connection.location,
-      dateAndTime:connection.date,
-      imageURL:connection.imageURL
+      imageurl:connection.imageurl,
     }
     var data = new connectionDB(addObject)
     data.save()
