@@ -18,6 +18,10 @@ router.get('/', function(request, response) {
   response.render('newConnection.ejs', {
     session: request.session.theUser,inserted:inserted
   });
+}else{
+  response.render('index.ejs', {
+    session: request.session.theUser
+  });
 }
 });
 

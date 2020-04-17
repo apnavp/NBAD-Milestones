@@ -7,7 +7,7 @@ var session = require('express-session');
 var userProfile = require('../model/userprofile');
 var connectionDB = require('../utility/connectionDB');
 var UserConnectionObject= require('../model/UserConnection.js');
-var userConnectionsDB=require('../utility/UserConnectionDB.js')
+var userConnectionsDB=require('../utility/UserConnectionDB.js');
 
 app.use(session({
   secret: 'my express secret',
@@ -19,41 +19,6 @@ var urlencodedParser = bodyParser.urlencoded({
   extended: false
 });
 
-var sessionAssign=async function(request,response,next)
-{
-
-    if(!request.session.theUser)
-    {
-      var users= await userDbUtil.getUser('Jason');
-
-      if(users!=null)
-      {
-
-        user= users;
-        request.session.theUser = user;
-
-         var findout=await userConnectionsDB.getUserProfile(user.UserID);
-         var UserConnections=[];
-         for (var i = 0; i < findout.length; i++) {
-
-           var connection=await connectionDB.getConnection(findout[i].connectionID)
-           console.log("inprofile"+connection);
-           var addConnection = new UserConnectionObject(connection,findout[i].RSVP);
-           UserConnections.push(addConnection);
-         }
-        Profile = new userProfile( request.session.theUser.UserID);
-        Profile.UserConnections=UserConnections;
-        request.session.UserProfile= Profile;
-
-    }
-      else {
-        response.render('index',{session:request.session.theUser});
-      }
-    }
-
-    next();
-}
-
 
 
 router.get('/logout', function(request, response) {
@@ -63,7 +28,7 @@ router.get('/logout', function(request, response) {
   });
 })
 
-router.all('/*', urlencodedParser,sessionAssign,async function(request, response) {
+router.all('/*', urlencodedParser,async function(request, response) {
   if (!request.session.UserProfile) {
     console.log("no user profile here");
     response.render('login', {
@@ -90,6 +55,7 @@ router.all('/*', urlencodedParser,sessionAssign,async function(request, response
             if (Profile.UserConnections[i].RSVP != formValue) {
               if (formValue == undefined) {
                 Profile.UserConnections[i].RSVP = 'MAYBE';
+                userConnectionsDB.updateRSVP(connectionID,request.session.theUser.UserID,formValue);
                 Profile.updateRSVP(Profile.UserConnections[i]);
                 request.session.UserProfile = Profile;
                 response.render('savedConnections', {
@@ -98,6 +64,7 @@ router.all('/*', urlencodedParser,sessionAssign,async function(request, response
                 });
               } else {
                 Profile.UserConnections[i].RSVP = formValue;
+                userConnectionsDB.updateRSVP(connectionID,request.session.theUser.UserID,formValue);
                 Profile.updateRSVP(Profile.UserConnections[i]);
                 request.session.UserProfile = Profile;
                 console.log(Profile);
@@ -129,6 +96,7 @@ router.all('/*', urlencodedParser,sessionAssign,async function(request, response
             console.log(formValue);
             if (formValue == undefined) {
               formValue = 'MAYBE';
+              userConnectionsDB.addRSVP(connectionID,request.session.theUser.UserID,formValue);
               Profile.addConnection(SingleConnection, formValue);
               request.session.UserProfile = Profile;
               response.render('savedConnections', {
@@ -136,6 +104,7 @@ router.all('/*', urlencodedParser,sessionAssign,async function(request, response
                 session: request.session.theUser
               });
             } else {
+              userConnectionsDB.addRSVP(connectionID,request.session.theUser.UserID,formValue);
               Profile.addConnection(SingleConnection, formValue);
               request.session.UserProfile = Profile;
               response.render('savedConnections', {
@@ -155,6 +124,7 @@ router.all('/*', urlencodedParser,sessionAssign,async function(request, response
           console.log("not there");
         } else {
           console.log("in delete");
+          userConnectionsDB.removeConnection(connectionID,request.session.theUser.UserID);
           Profile.removeConnection(deleteConnection);
           request.session.UserProfile = Profile;
           for (var i = 0; i <= Profile.UserConnections.length - 1; i++) {

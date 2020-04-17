@@ -82,16 +82,13 @@ module.exports.addConnection= function(connection,hostedby){
       start_location :connection.start_location,
       dateAndTime :connection.dateAndTime,
       details: connection.details,
-      imageurl:connection.imageurl,
+      imageurl:"../assets/images/spiti.jpeg",
     }
     var data = new connectionDB(addObject)
     data.save()
     return "yes";
   }
   })
-  )
-}
-)
-
-  })
+  );
+});
 }
