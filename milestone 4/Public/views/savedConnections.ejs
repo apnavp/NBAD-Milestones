@@ -32,12 +32,16 @@
         </tr>
         <% for(var i=0; i< qs.UserConnections.length ;i++) { %>
         <tr>
-          <td> <img class="s_img" src="<%= qs.UserConnections[i].Connection.imageurl%>" alt="no image"> <%= qs.UserConnections[i].Connection.connection_name%></td>
+          <td> <img class="s_img" src="<%= qs.UserConnections[i].Connection.imageurl%>" alt="no image">
+            <%= qs.UserConnections[i].Connection.connection_name%></td>
           <td><%= qs.UserConnections[i].Connection.connection_category%> </td>
           <td><%= qs.UserConnections[i].RSVP%> </td>
           <td>
-            <button class="sc_button" onclick="window.location.href = './connection?ID=<%= qs.UserConnections[i].Connection.connectionID %>';">Update</button>
-            <button class="sc_button" onclick="window.location.href = 'savedConnections?ID=<%= qs.UserConnections[i].Connection.connectionID %>&action=delete';">Delete</button></td>
+            <button class="sc_button"
+              onclick="window.location.href = './connection?ID=<%= qs.UserConnections[i].Connection.connectionID %>';">Update</button>
+            <button class="sc_button"
+              onclick="window.location.href = 'savedConnections?ID=<%= qs.UserConnections[i].Connection.connectionID %>&action=delete';">Delete</button>
+          </td>
         </tr>
         <% } %>
       </table>

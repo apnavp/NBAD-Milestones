@@ -3,7 +3,7 @@ var router = express.Router();
 var utility = require('../utility/connectionDB.js');
 var profileController = require('../controller/ProfileController.js');
 
-router.get('/', function(request, response) {
+router.get('/', function (request, response) {
 
   console.log(request.session.theUser);
   console.log("inside index route js");

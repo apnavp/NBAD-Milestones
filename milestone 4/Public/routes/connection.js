@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var utility = require('../utility/connectionDB.js');
 
-router.get('/', async function(request, response) {
+router.get('/', async function (request, response) {
   var ID = request.query.ID;
   console.log("id not found");
   var listTrek = await utility.getConnection(ID);
