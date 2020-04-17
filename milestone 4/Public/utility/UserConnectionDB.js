@@ -1,4 +1,4 @@
-﻿var connection=require('./connectionDB.js')
+var connection=require('./connectionDB.js')
 var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
@@ -90,6 +90,8 @@ module.exports.addConnection= function(connection,hostedby){
   }
   })
   )
+}
+)
 
   })
 }
