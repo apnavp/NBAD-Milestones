@@ -2,11 +2,8 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var router = express.Router();
-var userDbUtil = require('../utility/userDB');
 var session = require('express-session');
-var userProfile = require('../model/userprofile');
 var connectionDB = require('../utility/connectionDB');
-var UserConnectionObject= require('../model/UserConnection.js');
 var userProfileDB=require('../utility/UserProfileDB.js');
 
 app.use(session({
@@ -28,7 +25,7 @@ router.get('/logout', function(request, response) {
   });
 })
 
-router.all('/*', urlencodedParser,async function(request, response) {
+router.all('/*',urlencodedParser,async function(request, response) {
   if (!request.session.UserProfile) {
     console.log("no user profile here");
     response.render('login', {

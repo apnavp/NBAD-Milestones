@@ -2,6 +2,7 @@
 
 var connection=require('./connectionDB.js');
 
+
 var Schema = mongoose.Schema;
 var userConnectionsSchema = new Schema({
       UserID : String,
@@ -68,29 +69,32 @@ module.exports.removeConnection = function(connectionID, UserID){
 });
 }
 
-module.exports.addConnection= function(connection,hostedby){
+module.exports.addConnection= async function(connection,UserID){
   var ans = connection.connection_category.slice(0,2).toUpperCase();
   ans += Math.random().toString(36).slice(5);
   var bns=ans.slice(0,4);
   console.log("in random"+ans +"  "+bns);
   console.log(connection.details);
-  return new Promise(resolve =>{
-  resolve(connectionDB.find({connectionID:ans},function(err,d){
-    if(d.length === 0){
-      var addObject = {
-      connectionID :bns,
+
+  var newConnection = new connectionDB({
+    connectionID :bns,
       connection_name :connection.connection_name,
       connection_category :connection.connection_category,
-      hosted_by :hostedby,
+      hosted_by :UserID,
       start_location :connection.start_location,
       dateAndTime :connection.dateAndTime,
       details: connection.details,
-      imageurl:"../assets/images/man.png",
-    }
-    var data = new connectionDB(addObject)
-    data.save()
-    return "yes";
-  }}))
-});
+      imageurl:"../assets/images/man.png"
+  });
+  let result = await newConnection.save();
+  if (result == newConnection) {
+    console.log("Connection Added");
+    // module.exports.addRSVP(bns,UserID,"YES");
+  } else {
+    console.log("Connection Adding failed");
+  }
+
 }
+
+
 
