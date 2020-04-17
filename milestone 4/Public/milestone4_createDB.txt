@@ -1,4 +1,6 @@
 ﻿use traveller
+db.dropDatabase()
+use traveller
 db.createCollection('connections')
 db.createCollection('users')
 db.connections.insertMany([{'connectionID': "TK1",'connection_name': "Chandrashila",'connection_category': "Trek", 'hosted_by': "John Doe",'start_location': "Delhi", 'dateAndTime': "Jan 31,  5pm", 'details': "Chandrashila is summit of the Tungnath . It literally means \"Moon Rock\". It is located at a height of about 4,000 metres (13,000 ft) above sea level. This peak provides views of the Himalayas, including Nandadevi, Trisul, Kedar Peak, Bandarpunch and Chaukhamba peaks. There are various legends associated with this place. According to one such legend, this is the place where Lord Rama meditated after defeating the demon-king Ravana. Another legend says that moon-god Chandra spent time here in penance.", 'imageurl': '../assets/images/man.png'},
@@ -9,3 +11,14 @@ db.connections.insertMany([{'connectionID': "TK1",'connection_name': "Chandrashi
 {'connectionID': "TP2",'connection_name': "Adventures in Meghalaya", 'connection_category': "Trip", 'hosted_by': "Bootcamp",'start_location': "Meghalaya", 'dateAndTime': "Feb 24, 12pm", 'details': "Kayaking, Caving, Mountain Biking, and Trekking are the major adventure activities one can do in Meghalaya. Covered with lush green forests, Meghalaya provides one of the best trekking experiences. Even though few of the hikes are tiring, but the snow-covered mountains and pleasant landscapes make them worth.", 'imageurl': '../assets/images/spiti.jpeg'},
 {'connectionID': "TP3",'connection_name': "Hornbill Festival", 'connection_category': "Trip", 'hosted_by': "Travellers",'start_location': "Kisama", 'dateAndTime': "Feb 26, 1pm", 'details': "The festival is attended by all of Nagaland's major tribes. It features traditional arts, dances, folk songs, and indigenous games. All this takes place amid immaculate replicas of tribal huts (morungs), complete with wood carvings and hollow log drum instruments. The drums are beat in haunting symphony at the end of the day. The festival's opening and closing ceremonies are another highlight, with spectacular shows from all the tribes in the amphitheater.", 'imageurl': '../assets/images/horn_bill.jpeg'},
 {'connectionID': "TP4",'connection_name': "Ziro Music Festival", 'connection_category': "Trip", 'hosted_by': "Tailor made Journey",'start_location': "Shannan, Tibet", 'dateAndTime': "Feb 28, 4pm", 'details': "Zero is a Winter Sport and Music Festival that started 5 years ago in Los Angles California.  Minus Zero is a unique festival experience unlike any other in the world.  Where else can you hit the slopes and ski right into the stage area while your favorite artist is performing and then head back to your cabin with your crew.   When it first launched in LA artists like Jamie Jones and Lee Burridge headlined.   From there we moved to the East coast and In April  2016 Minus Zero held its inaugural Vermont festival at Stratton Resort in Vermont with deadmau5 and Kaskade headlining. The Festival became an instant mainstay in the state and festival Circuit.  Minus Zero marks the start of Festival Season for many people.", 'imageurl': '../assets/images/ziro.jpeg'}])
+
+db.users.insert({ UserID: 'apnav24',
+  firstName: 'Apnav',
+  lastName: 'Poptani',
+  emailAddress: 'apoptani@uncc.edu',
+  address1Field: '9505 UT',
+  address2Field: 'APT X',
+  city: 'charlotte',
+  state: 'NC',
+  postCode: '29262',
+  country: 'US'})

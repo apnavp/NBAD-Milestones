@@ -1,5 +1,6 @@
-var connection=require('./connectionDB.js')
-var mongoose = require('mongoose');
+﻿var mongoose = require('mongoose');
+
+var connection=require('./connectionDB.js');
 
 var Schema = mongoose.Schema;
 var userConnectionsSchema = new Schema({
@@ -8,8 +9,10 @@ var userConnectionsSchema = new Schema({
       RSVP:String
 });
 
-var connectionDB=mongoose.model('connections',connection.connectionSchema)
+
+var connectionDB=mongoose.model('connections',connection.connectionSchema);
 var userConnectionsDB = mongoose.model('userConnections',userConnectionsSchema);
+
 
 module.exports.getUserProfile= function(UserID)
 {
@@ -53,7 +56,7 @@ module.exports.addRSVP= function(connectionID, UserID, rsvp)
   })
   )
 
-})
+});
 
 };
 
@@ -71,6 +74,7 @@ module.exports.addConnection= function(connection,hostedby){
   ans += Math.random().toString(36).slice(5);
   var bns=ans.slice(0,4);
   console.log("in random"+ans +"  "+bns);
+  console.log(connection.details);
   return new Promise(resolve =>{
   resolve(connectionDB.find({connectionID:ans},function(err,d){
     if(d.length === 0){
@@ -82,13 +86,12 @@ module.exports.addConnection= function(connection,hostedby){
       start_location :connection.start_location,
       dateAndTime :connection.dateAndTime,
       details: connection.details,
-      imageurl:"../assets/images/spiti.jpeg",
+      imageurl:"../assets/images/man.png",
     }
     var data = new connectionDB(addObject)
     data.save()
     return "yes";
-  }
-  })
-  );
+  }}))
 });
 }
+

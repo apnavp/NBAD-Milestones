@@ -26,11 +26,11 @@ router.get('/', function(request, response) {
 });
 
 router.post('/',urlencodedParser,function(request,response){
-  console.log(request.body);
+
   if(request.session.theUser)
   {
     console.log("in new info new connection");
-    console.log(request.body);
+
 
     if(request.body!=undefined){
       userConnectionsDB.addConnection(request.body,request.session.theUser.firstName).then(function(){
