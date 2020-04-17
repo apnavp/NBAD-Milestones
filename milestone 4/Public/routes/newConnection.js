@@ -3,7 +3,7 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 var utility = require('../utility/connectionDB.js');
 var userProfile = require('../model/userprofile');
-var userProfileDB=require('../utility/UserProfileDB.js')
+var userConnectionsDB=require('../utility/UserConnectionDB.js')
 
 var urlencodedParser = bodyParser.urlencoded({
   extended: false
@@ -31,10 +31,12 @@ router.post('/',urlencodedParser, function(request,response){
 
 
     if(request.body!=undefined){
-      userProfileDB.addConnection(request.body,request.session.theUser.firstName).then(function(){
+        userConnectionsDB.addConnection(request.body,request.session.theUser.firstName).then(function(){
         inserted=true;
         response.render('newConnection',{session:request.session.theUser,inserted:inserted});
       })
+
+      // userConnectionsDB.addRSVP(connectionID,request.session.theUser.UserID,formValue);
 
     }
     else{
