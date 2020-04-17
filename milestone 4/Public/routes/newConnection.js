@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var utility = require('../utility/connectionDB.js');
 var userDbUtil = require('../utility/userDB');
 var userProfile = require('../model/userprofile');
-var userConnectionsDB=require('../utility/UserConnectionDB.js')
+var userConnectionsDB=require('../utility/UserProfileDB.js')
 
 var urlencodedParser = bodyParser.urlencoded({
   extended: false

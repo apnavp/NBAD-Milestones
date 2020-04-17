@@ -7,7 +7,7 @@ var userDbUtil = require('../utility/userDB');
 var session = require('express-session');
 var connectionDB = require('../utility/connectionDB');
 var UserConnectionObject= require('../model/UserConnection.js');
-var userConnectionsDB=require('../utility/UserConnectionDB.js');
+var userProfileDB=require('../utility/UserProfileDB.js');
 
 var urlencodedParser = bodyParser.urlencoded({
   extended: false
@@ -26,7 +26,7 @@ var sessionAssign=async function(request,response,next)
         user= users;
         request.session.theUser = user;
 
-         var findout=await userConnectionsDB.getUserProfile(request.body.login);
+         var findout=await userProfileDB.getUserProfile(request.body.login);
          var UserConnections=[];
          for (var i = 0; i < findout.length; i++) {
 

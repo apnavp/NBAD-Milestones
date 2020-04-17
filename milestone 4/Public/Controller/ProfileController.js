@@ -7,7 +7,7 @@ var session = require('express-session');
 var userProfile = require('../model/userprofile');
 var connectionDB = require('../utility/connectionDB');
 var UserConnectionObject= require('../model/UserConnection.js');
-var userConnectionsDB=require('../utility/UserConnectionDB.js');
+var userConnectionsDB=require('../utility/UserProfileDB.js');
 
 app.use(session({
   secret: 'my express secret',
