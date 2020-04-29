@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>New Connections</title>
+  <link href="/assets/stylesheets/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <!-- Header start for New connection -->
+  <%- include ('partials/header.ejs') %>
+  <!-- Header end for New connection -->
+
+  <!-- navigation start for New connection -->
+  <%- include ('partials/navigation.ejs') %>
+  <!-- navigation end for New connection -->
+
+  <!-- main start for New connection -->
+  <main>
+    <section>
+      <div>
+        <%if(inserted){%>
+        <div>
+          INSERTED
+        </div>
+
+        <%}%>
+      <form id="contact-for" class="form_nc" method="POST" action="newConnection">
+        <!-- <div class="form_format"> -->
+        <div class="form_div">
+          <label for="Topic">Name of event</label>
+          <input id="connection_name" type="text" name="connection_name" required>
+        </div>
+        <div class="form_div">
+          <label for="name">Category</label>
+          <select id="connection_category" required name="connection_category" required>
+            <option value="" disabled selected>Choose one</option>
+            <option value="Trek">Trek</option>
+            <option value="Trip">Trip</option>
+          </select>
+        </div>
+        <div class="form_div">
+          <label for="details">Start Location</label>
+          <input id="start_location" type="text" placeholder="Start location"  name="start_location" required>
+        </div>
+        <div class="form_div">
+          <label for="when">Date and time</label>
+          <input type="text" id="dateAndTime" placeholder="mm/dd/yyyy, hh:mm" name="dateAndTime" required>
+        </div>
+        <div class="form_div">
+          <label for="where">Details</label>
+          <input type="text" id="Details" placeholder="Location" name="details" required>
+        </div>
+
+        <div class="form_div">
+          <input type="submit" class="submit_bttn" value="submit" />
+        </div>
+        <!-- </div> -->
+      </form>
+    </section>
+  </main>
+  <!-- main end for New connection -->
+
+  <!-- footer start for New connection -->
+  <%- include ('partials/footer.ejs') %>
+        <!-- footer end for New connection -->
+</body>
+
+</html>
