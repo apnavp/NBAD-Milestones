@@ -8,6 +8,7 @@ router.get('/', function (request, response) {
   console.log(request.session.theUser);
   console.log("inside index route js");
   response.render('index.ejs', {
+    pageData: [],
     session: request.session.theUser
   });
 });

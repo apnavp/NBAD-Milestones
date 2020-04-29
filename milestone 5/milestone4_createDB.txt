@@ -21,4 +21,5 @@ db.users.insert({ UserID: 'apnav24',
   city: 'charlotte',
   state: 'NC',
   postCode: '29262',
-  country: 'US'})
+  country: 'US',
+  password:'password'})

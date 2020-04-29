@@ -26,20 +26,27 @@ var userSchema = new schema({
   city: String,
   state: String,
   postCode: String,
-  country: String
+  country: String,
+  password:String
 });
 
 var userModel = mongoose.model('users', userSchema);
 
 
-module.exports.getUser = function (UserID) {
+module.exports.getUser = function (UserID, password) {
   return new Promise(resolve => {
     resolve(userModel.findOne({
-      UserID: UserID
+     UserID:UserID
     }).then(function (data) {
       let users = [];
       console.log("in mongo" + data);
-
+      if (data){
+        console.log("this is password"+password);
+      if (data.password==password){
+        console.log("password match");
+        console.log(data.password);
+      }}
+      if(data && data.password==password){
       let userAdd = new User(data.UserID,
         data.firstName,
         data.lastName,
@@ -49,9 +56,13 @@ module.exports.getUser = function (UserID) {
         data.city,
         data.state,
         data.postCode,
-        data.country
+        data.country,
+        data.password
       )
       return userAdd;
-    }));
+  }else
+  console.log("password did not match");
+  return null;
+}));
   });
 }
