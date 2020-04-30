@@ -16,12 +16,32 @@ var urlencodedParser = bodyParser.urlencoded({
 });
 
 
-router.get('/', function (request, response) {
+router.get('/', async function (request, response) {
+ if(!request.session.theUser){
   response.render('login', {
     pageData: [],
     session: request.session.theUser,
     Success:true
-  });
+  });}
+  else{
+    user = request.session.theUser;
+    request.session.theUser = user;
+    var findout = await userProfileDB.getUserProfile(request.session.theUser.UserID);
+    var UserConnections = [];
+    for (var i = 0; i < findout.length; i++) {
+      var connection = await connectionDB.getConnection(findout[i].connectionID)
+      console.log("inprofile" + connection);
+      var addConnection = new UserConnectionObject(connection, findout[i].RSVP);
+      UserConnections.push(addConnection);
+    }
+    Profile = new userProfile(request.session.theUser.UserID);
+    Profile.UserConnections = UserConnections;
+    request.session.UserProfile = Profile;
+    response.render('savedConnections', {
+      session: request.session.theUser,
+      qs: request.session.UserProfile,
+    });
+  }
 });
 
 router.post('/', urlencodedParser,[

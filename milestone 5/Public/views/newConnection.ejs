@@ -2,6 +2,7 @@
 <html>
 
 <head>
+
   <meta charset="UTF-8">
   <title>New Connections</title>
   <link href="/assets/stylesheets/style.css" rel="stylesheet" type="text/css" />
@@ -30,32 +31,55 @@
         <!-- <div class="form_format"> -->
         <div class="form_div">
           <label for="Topic">Name of event</label>
-          <input id="connection_name" type="text" name="connection_name" required>
+          <input id="connection_name" type="text" name="connection_name" >
+          <% if(pageData[0]) { %>
+            <div class="alert alert-danger">
+              <%= pageData[0].msg %>
+            </div>
+            <% } %>
         </div>
         <div class="form_div">
           <label for="name">Category</label>
-          <select id="connection_category" required name="connection_category" required>
+          <select id="connection_category"  name="connection_category" >
             <option value="" disabled selected>Choose one</option>
             <option value="Trek">Trek</option>
             <option value="Trip">Trip</option>
           </select>
+          <% if(pageData[1]) { %>
+            <div class="alert alert-danger">
+              <%= pageData[1].msg %>
+            </div>
+            <%}%>
         </div>
         <div class="form_div">
           <label for="details">Start Location</label>
-          <input id="start_location" type="text" placeholder="Start location"  name="start_location" required>
+          <input id="start_location" type="text" placeholder="Start location"  name="start_location" >
+          <% if(pageData[2]) { %>
+            <div class="alert alert-danger">
+              <%= pageData[2].msg %>
+            </div>
+            <%}%>
         </div>
         <div class="form_div">
           <label for="when">Date and time</label>
-          <input type="text" id="dateAndTime" placeholder="mm/dd/yyyy, hh:mm" name="dateAndTime" required>
+          <input type="datetime" id="dateAndTime" placeholder="mm/dd/yyyy, hh:mm" name="dateAndTime" >
+          <% if(pageData[3]) { %>
+            <div class="alert alert-danger">
+              <%= pageData[3].msg %>
+            </div>
+            <%}%>
         </div>
         <div class="form_div">
           <label for="where">Details</label>
-          <input type="text" id="Details" placeholder="Location" name="details" required>
+          <input type="text" id="Details" placeholder="Location" name="details" >
+          <% if(pageData[4]) { %>
+            <div class="alert alert-danger">
+              <%= pageData[4].msg %>
+            </div>
+            <%}%>
         </div>
-
-        <div class="form_div">
           <input type="submit" class="submit_bttn" value="submit" />
-        </div>
+
         <!-- </div> -->
       </form>
     </section>
