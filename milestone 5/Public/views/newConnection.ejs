@@ -2,7 +2,6 @@
 <html>
 
 <head>
-
   <meta charset="UTF-8">
   <title>New Connections</title>
   <link href="/assets/stylesheets/style.css" rel="stylesheet" type="text/css" />
@@ -22,10 +21,9 @@
     <section>
       <div>
         <%if(inserted){%>
-        <div>
-          INSERTED
-        </div>
-
+          <div class="alert alert-success div_login" role="alert">
+           Connection added successfully <a href="connections" class="alert-link">Connections</a>. Follow the link.
+          </div>
         <%}%>
       <form id="contact-for" class="form_nc" method="POST" action="newConnection">
         <!-- <div class="form_format"> -->
@@ -62,7 +60,7 @@
         </div>
         <div class="form_div">
           <label for="when">Date and time</label>
-          <input type="datetime" id="dateAndTime" placeholder="mm/dd/yyyy, hh:mm" name="dateAndTime" >
+          <input type="text" id="dateAndTime" placeholder="mm/dd/yyyy, hh:mm" name="dateAndTime" >
           <% if(pageData[3]) { %>
             <div class="alert alert-danger">
               <%= pageData[3].msg %>

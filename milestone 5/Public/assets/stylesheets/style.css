@@ -99,7 +99,7 @@ footer {
   align-items: center;
   font-size: 1px;
   bottom: 0;
-  height: 35px;
+  height: 25px;
   flex: 0 0 50px;
   margin-top: auto;
 }
@@ -287,7 +287,7 @@ a{
 }
 
 .div_login{
-  width: 41%;
+  width: 43%;
 }
 
 .alert-danger {
@@ -302,4 +302,14 @@ a{
   border: 1px solid transparent;
   border-radius: 4px;
   font-weight: bold;
+}
+
+.alert-success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+.alert-link {
+  font-weight: 700;
 }

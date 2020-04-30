@@ -14,8 +14,10 @@ var urlencodedParser = bodyParser.urlencoded({
 
 var inserted = null;
 router.get('/', function (request, response) {
+  console.log("here inside new connection GET");
   if (request.session.theUser) {
     console.log("inside new connection route js");
+    inserted = false;
     response.render('newConnection.ejs', {
       pageData:[],
       session: request.session.theUser,
@@ -28,7 +30,7 @@ router.get('/', function (request, response) {
   }
 });
 
-router.post('/',
+router.post('/', urlencodedParser,
     [
       check("connection_name")
       .not()
@@ -51,7 +53,7 @@ router.post('/',
       .isEmpty()
       .withMessage("Details field cannot be blank")
     ],
-    urlencodedParser, async function (request, response, next) {
+    async function (request, response, next) {
 
       if (request.session.theUser) {
         console.log("in new info new connection");
@@ -90,13 +92,14 @@ router.post('/',
             await userProfileDB.addConnection(request.body, request.session.theUser.firstName).then(function () {
               inserted = true;
               response.render('newConnection', {
-                pageData: errorObject,
+                pageData: [],
                 session: request.session.theUser,
                 inserted: inserted
               });
             })
           } else {
             response.render('newConnection', {
+              pageData: [],
               session: request.session.theUser,
               inserted: inserted});
           }
