@@ -1,10 +1,29 @@
 @charset "UTF-8";
 
-article, aside, footer, main, nav, section {
+article,
+aside,
+footer,
+main,
+nav,
+section {
   display: block;
 }
 
-html, body, h1, h3, ul, li, a, p, article, aside, header, footer, main, nav, section {
+html,
+body,
+h1,
+h3,
+ul,
+li,
+a,
+p,
+article,
+aside,
+header,
+footer,
+main,
+nav,
+section {
   padding: 0;
   margin: 0;
 }
@@ -90,7 +109,7 @@ p {
 footer {
 
   color: #038CB8;
-  position:fixed;
+  position: fixed;
   width: 100%;
   background: black;
   display: flex;
@@ -187,11 +206,16 @@ table {
   ;
 }
 
-table, th, tr, td {
+table,
+th,
+tr,
+td {
   border: 1px solid;
 }
 
-th, td, tr {
+th,
+td,
+tr {
   padding: 5px 5px;
   text-align: left;
 }
@@ -249,44 +273,48 @@ input {
   width: 325px;
 }
 
-.form_format{
-	flex-direction: row;
+.form_format {
+  flex-direction: row;
   align-items: center;
 }
 
-.form_nc{
+.form_nc {
   margin-bottom: auto;
 }
 
-form{
+form {
   display: table;
 }
 
-label { display: table-cell;
+label {
+  display: table-cell;
   display: inline-block;
-    text-align: right;
-    padding: 0% 0% 4% 0%;
-  }
-input { display: table-cell;
-padding-left: 20px;}
+  text-align: right;
+  padding: 0% 0% 4% 0%;
+}
+
+input {
+  display: table-cell;
+  padding-left: 20px;
+}
 
 
-.s_img{
+.s_img {
   object-fit: scale-down;
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
 }
 
-h4{
-  text-transform:capitalize;
+h4 {
+  text-transform: capitalize;
 }
 
-a{
+a {
   text-decoration: none;
 }
 
-.div_login{
+.div_login {
   width: 43%;
 }
 

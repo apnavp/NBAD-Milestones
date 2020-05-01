@@ -19,66 +19,63 @@
   <!-- main start for New connection -->
   <main>
     <section>
-      <div>
-        <%if(inserted){%>
-          <div class="alert alert-success div_login" role="alert">
-           Connection added successfully <a href="connections" class="alert-link">Connections</a>. Follow the link.
-          </div>
-        <%}%>
+      <%if(inserted){%>
+      <div class="alert alert-success div_login" role="alert">
+        Connection added successfully <a href="connections" class="alert-link">Connections</a>. Follow the link.
+      </div>
+      <%}%>
       <form id="contact-for" class="form_nc" method="POST" action="newConnection">
         <!-- <div class="form_format"> -->
         <div class="form_div">
-          <label for="Topic">Name of event</label>
+          <label id="Topic">Name of event</label>
           <input id="connection_name" type="text" name="connection_name" >
           <% if(pageData[0]) { %>
-            <div class="alert alert-danger">
-              <%= pageData[0].msg %>
-            </div>
-            <% } %>
+      <div class="alert alert-danger">
+        <%= pageData[0].msg %>
+      </div>
+      <% } %>
+      </div>
+      <div class="form_div">
+        <label id="name">Category</label>
+        <select id="connection_category" name="connection_category">
+          <option value="" disabled selected>Choose one</option>
+          <option value="Trek">Trek</option>
+          <option value="Trip">Trip</option>
+        </select>
+        <% if(pageData[1]) { %>
+        <div class="alert alert-danger">
+          <%= pageData[1].msg %>
+        </div>
+        <%}%>
         </div>
         <div class="form_div">
-          <label for="name">Category</label>
-          <select id="connection_category"  name="connection_category" >
-            <option value="" disabled selected>Choose one</option>
-            <option value="Trek">Trek</option>
-            <option value="Trip">Trip</option>
-          </select>
-          <% if(pageData[1]) { %>
-            <div class="alert alert-danger">
-              <%= pageData[1].msg %>
-            </div>
-            <%}%>
-        </div>
-        <div class="form_div">
-          <label for="details">Start Location</label>
+          <label id="details">Start Location</label>
           <input id="start_location" type="text" placeholder="Start location"  name="start_location" >
           <% if(pageData[2]) { %>
-            <div class="alert alert-danger">
-              <%= pageData[2].msg %>
-            </div>
-            <%}%>
+        <div class="alert alert-danger">
+          <%= pageData[2].msg %>
+        </div>
+        <%}%>
         </div>
         <div class="form_div">
-          <label for="when">Date and time</label>
+          <label id="when">Date and time</label>
           <input type="text" id="dateAndTime" placeholder="mm/dd/yyyy, hh:mm" name="dateAndTime" >
           <% if(pageData[3]) { %>
-            <div class="alert alert-danger">
-              <%= pageData[3].msg %>
-            </div>
-            <%}%>
+        <div class="alert alert-danger">
+          <%= pageData[3].msg %>
+        </div>
+        <%}%>
         </div>
         <div class="form_div">
-          <label for="where">Details</label>
+          <label id="where">Details</label>
           <input type="text" id="Details" placeholder="Location" name="details" >
           <% if(pageData[4]) { %>
-            <div class="alert alert-danger">
-              <%= pageData[4].msg %>
-            </div>
-            <%}%>
+        <div class="alert alert-danger">
+          <%= pageData[4].msg %>
+        </div>
+        <%}%>
         </div>
           <input type="submit" class="submit_bttn" value="submit" />
-
-        <!-- </div> -->
       </form>
     </section>
   </main>

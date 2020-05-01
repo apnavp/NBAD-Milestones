@@ -4,6 +4,7 @@ class UserConnection {
     this.RSVP = RSVP;
   }
 
+  //getter and setters
   get getConnection() {
     return this.Connection;
   }

@@ -1,7 +1,11 @@
+// express app,router and utility requires start
 var express = require('express');
 var router = express.Router();
 var utility = require('../utility/connectionDB.js');
+// express app,router and utility requires end
 
+
+// Routing for about connections start
 router.get('/', async function (request, response) {
   var ID = request.query.ID;
   console.log("id not found");
@@ -31,4 +35,9 @@ router.get('/', async function (request, response) {
 
 });
 
+
+// Routing for about connections end
+
+
+// exporting router
 module.exports = router;

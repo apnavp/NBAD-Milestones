@@ -1,6 +1,8 @@
+// express app,router and utility requires start
 var express = require('express');
 var router = express.Router();
 var utility = require('../utility/connectionDB.js');
+// express app,router and utility requires end
 
 router.get('/', async function (request, response) {
 
@@ -20,4 +22,5 @@ router.get('/', async function (request, response) {
   });
 });
 
+// exporting router
 module.exports = router;

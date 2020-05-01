@@ -1,3 +1,4 @@
+// express app,router and utility requires start
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
@@ -5,6 +6,7 @@ var router = express.Router();
 var session = require('express-session');
 var connectionDB = require('../utility/connectionDB');
 var userProfileDB = require('../utility/UserProfileDB.js');
+// express app,router and utility requires end
 
 app.use(session({
   secret: 'my express secret',
@@ -15,7 +17,6 @@ app.use(session({
 var urlencodedParser = bodyParser.urlencoded({
   extended: false
 });
-
 
 
 router.get('/logout', function (request, response) {
@@ -137,4 +138,5 @@ router.all('/*', urlencodedParser, async function (request, response) {
   }
 });
 
+// Exporting router
 module.exports = router;
