@@ -28,7 +28,7 @@
         <!-- <div class="form_format"> -->
         <div class="form_div">
           <label id="Topic">Name of event</label>
-          <input id="connection_name" type="text" name="connection_name" >
+          <input id="connection_name" type="text" name="connection_name" placeholder="Name of event">
           <% if(pageData[0]) { %>
       <div class="alert alert-danger">
         <%= pageData[0].msg %>
@@ -58,8 +58,8 @@
         <%}%>
         </div>
         <div class="form_div">
-          <label id="when">Date and time</label>
-          <input type="datetime-local" id="dateAndTime" placeholder="mm/dd/yyyy, hh:mm" name="dateAndTime" >
+          <label id="when">Start Date</label>
+          <input type="date" id="when" name="date">
           <% if(pageData[3]) { %>
         <div class="alert alert-danger">
           <%= pageData[3].msg %>
@@ -67,11 +67,20 @@
         <%}%>
         </div>
         <div class="form_div">
-          <label id="details">Details</label>
-          <textarea rows="8" id="Details" placeholder="Details of the event" name="details" ></textarea>
+          <label id="when">Start Time</label>
+          <input type="time" id="when" name="time">
           <% if(pageData[4]) { %>
         <div class="alert alert-danger">
           <%= pageData[4].msg %>
+        </div>
+        <%}%>
+        </div>
+        <div class="form_div">
+          <label id="details">Details</label>
+          <textarea rows="8" id="Details" placeholder="Details of the event" name="details" ></textarea>
+          <% if(pageData[5]) { %>
+        <div class="alert alert-danger">
+          <%= pageData[5].msg %>
         </div>
         <%}%>
         </div>

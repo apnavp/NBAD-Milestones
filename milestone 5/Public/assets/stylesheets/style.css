@@ -74,6 +74,7 @@ li {
   margin-left: 15px;
   margin-right: 15px;
   font-size: 17px;
+  padding-bottom: 0.5%;
 }
 
 .nav_top_spacing {
@@ -319,6 +320,7 @@ a {
   border: 1px solid transparent;
   border-radius: 4px;
   font-weight: bold;
+  margin-left: 78px;
 }
 
 .alert-success {

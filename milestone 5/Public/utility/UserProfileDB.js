@@ -65,8 +65,7 @@ module.exports.addConnection = async function (connection, UserID) {
   ans += Math.random().toString(36).slice(5);
   var bns = ans.slice(0, 4);
   console.log("in random" + ans + "  " + bns);
-  console.log(connection.details);
-  var date = connection.dateAndTime
+  var date = connection.date +"T"+connection.time
   var f_date_time = moment(date).format('MMMM Do YYYY, h:mm a');
   console.log("this is formated date" + f_date_time);
   var newConnection = new connectionDB({

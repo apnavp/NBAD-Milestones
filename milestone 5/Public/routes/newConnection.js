@@ -37,7 +37,9 @@ router.post('/', urlencodedParser,
     .not()
     .isEmpty()
     .withMessage("Name of event cannot be blank")
-    .isLength({ min: 5 })
+    .isLength({
+      min: 5
+    })
     .withMessage('Connection name should contain atleast 5 characters.')
     .escape(),
     check("connection_category")
@@ -51,22 +53,46 @@ router.post('/', urlencodedParser,
     .not()
     .isEmpty()
     .withMessage("Start location cannot be blank")
-    .isLength({ min: 3 })
+    .isLength({
+      min: 3
+    })
     .withMessage('location should contain atleast 3 characters.')
     .escape(),
-    check("dateAndTime")
+
+    check("date")
     .trim()
     .not()
     .isEmpty()
-    .withMessage("Date and time field cannot be blank")
+    .withMessage("Date cannot be blank")
+    .custom((value) => {
+      var GivenDate = new Date(value);
+      var CurrentDate = new Date();
+      console.log("this is given date" + GivenDate);
+      console.log("this is today's date" + CurrentDate);
+      if (GivenDate > CurrentDate) {
+        return true
+      }
+      return false
+    })
+    .withMessage('Date should be greater than the current date.')
     .escape(),
+
+    check("time")
+    .trim()
+    .not()
+    .isEmpty()
+    .withMessage("Time cannot be blank")
+    .escape(),
+
     check("details")
     .trim()
     .not()
     .isEmpty()
     .withMessage("Details field cannot be blank")
-    .isLength({ min: 5 })
-    .withMessage('deatils should contain brief description')
+    .isLength({
+      min: 5
+    })
+    .withMessage('Deatils should contain brief description')
     .escape()
   ],
   async function (request, response, next) {
@@ -84,8 +110,11 @@ router.post('/', urlencodedParser,
         let locationErrors = errors.find(val => {
           return val.param == "start_location";
         });
-        let dntErrors = errors.find(val => {
-          return val.param == "dateAndTime";
+        let dateErrors = errors.find(val => {
+          return val.param == "date";
+        });
+        let timeErrors = errors.find(val => {
+          return val.param == "time";
         });
         let detailErrors = errors.find(val => {
           return val.param == "details";
@@ -94,7 +123,8 @@ router.post('/', urlencodedParser,
           nameErrors,
           categoryErrors,
           locationErrors,
-          dntErrors,
+          dateErrors,
+          timeErrors,
           detailErrors
         ];
         response.render("newConnection", {
