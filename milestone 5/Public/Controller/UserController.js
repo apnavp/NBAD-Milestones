@@ -27,7 +27,8 @@ router.get('/', async function (request, response) {
     response.render('login', {
       pageData: [],
       session: request.session.theUser,
-      Success: true
+      Success: true,
+
     });
   } else {
     user = request.session.theUser;
@@ -75,7 +76,25 @@ router.post('/', urlencodedParser, [
   if (errors[0] == undefined && errors[1] == undefined) {
     let users = await userDbUtil.getUser(request.body.login, request.body.password);
     console.log("users are" + users);
-    if (users) {
+    if (users=="password not correct") {
+      console.log("inside user controller-password not correct");
+      response.render("login", {
+        pageData: loginObject,
+        Success: false,
+        session: request.session.theUser,
+        msg: "Password not correct. Please try again"
+      });
+    }
+      else if(users=="user does not exist"){
+        console.log(" inside user controller-user does not exist");
+        response.render("login", {
+          pageData: loginObject,
+          Success: false,
+          session: request.session.theUser,
+          msg: "User does not exist"
+        });
+      }
+      else if (users) {
       user = users;
       request.session.theUser = user;
       var findout = await userProfileDB.getUserProfile(request.body.login);
@@ -98,7 +117,8 @@ router.post('/', urlencodedParser, [
       response.render("login", {
         pageData: loginObject,
         Success: false,
-        session: request.session.theUser
+        session: request.session.theUser,
+        msg:"Either username of password not correct"
       });
     }
   } else {
@@ -106,7 +126,7 @@ router.post('/', urlencodedParser, [
       pageData: loginObject,
       session: request.session.theUser,
       UserID: undefined,
-      Success: true
+      Success: true,
     });
     next();
   }

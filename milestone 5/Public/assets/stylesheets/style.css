@@ -151,7 +151,7 @@ footer {
 section {
   padding-left: 60px;
   padding-top: 20px;
-  height:420px;
+  height: 420px;
   overflow: auto;
 }
 
@@ -248,7 +248,8 @@ button {
 }
 
 .form_div {
-  margin-top: 15px;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 /* CSS Document */
@@ -334,8 +335,10 @@ a {
 }
 
 textarea {
+  vertical-align: top;
   width: 64%;
   padding-left: 20px;
+  padding-top: 10px;
 }
 
 select {

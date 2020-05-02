@@ -42,13 +42,7 @@ module.exports.getUser = function (UserID, password) {
       let users = [];
       console.log("in mongo" + data);
       if (data) {
-        console.log("this is password" + password);
-        if (data.password == password) {
-          console.log("password match");
-          console.log(data.password);
-        }
-      }
-      if (data && data.password == password) {
+       if(data.password == password){
         let userAdd = new User(data.UserID,
           data.firstName,
           data.lastName,
@@ -62,9 +56,12 @@ module.exports.getUser = function (UserID, password) {
           data.password
         )
         return userAdd;
-      } else
-        console.log("password did not match");
-      return null;
+       }
+       console.log("password not correct");
+       return "password not correct";
+      }else
+        console.log("user does not exist");
+      return "user does not exist";
     }));
   });
 }

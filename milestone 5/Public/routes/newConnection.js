@@ -64,6 +64,7 @@ router.post('/', urlencodedParser,
     .not()
     .isEmpty()
     .withMessage("Date cannot be blank")
+    //custom validator to check for entered date greater than current date
     .custom((value) => {
       var GivenDate = new Date(value);
       var CurrentDate = new Date();
