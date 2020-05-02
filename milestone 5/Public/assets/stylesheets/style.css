@@ -89,13 +89,6 @@ li {
   border-left: none;
 }
 
-.div_table {
-  margin-top: 40px;
-  margin-left: 50px;
-  margin-right: 40px;
-  padding: 5px;
-  margin-bottom: 50px;
-}
 
 article {
   margin-top: 5px;
@@ -107,9 +100,8 @@ p {
 }
 
 footer {
-
   color: #038CB8;
-  position: fixed;
+  position: static;
   width: 100%;
   background: black;
   display: flex;
@@ -158,6 +150,8 @@ footer {
 section {
   padding-left: 60px;
   padding-top: 20px;
+  height:420px;
+  overflow: auto;
 }
 
 .conn_sections {
@@ -202,7 +196,7 @@ section {
 
 table {
   border-collapse: collapse;
-  width: 500px;
+  width: fit-content;
   ;
 }
 
@@ -264,6 +258,7 @@ button {
 input {
   width: 300px;
   height: 30px;
+  padding-left: 20px;
 }
 
 .submit_bttn {
@@ -287,17 +282,11 @@ form {
 }
 
 label {
-  display: table-cell;
   display: inline-block;
   text-align: right;
   padding: 0% 0% 4% 0%;
+  width: 140px;
 }
-
-input {
-  display: table-cell;
-  padding-left: 20px;
-}
-
 
 .s_img {
   object-fit: scale-down;
@@ -340,4 +329,14 @@ a {
 
 .alert-link {
   font-weight: 700;
+}
+
+textarea {
+  width: 64%;
+  padding-left: 20px;
+}
+
+select {
+  width: 325px;
+  height: 30px;
 }

@@ -29,7 +29,7 @@ router.get('/logout', function (request, response) {
 router.all('/*', urlencodedParser, async function (request, response) {
   if (!request.session.UserProfile) {
     console.log("no user profile here");
-    response.render('login', {
+    response.render('not_logged.ejs',{
       session: request.session.theUser
     });
   } else {

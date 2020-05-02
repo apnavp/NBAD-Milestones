@@ -65,7 +65,7 @@ router.post('/', urlencodedParser,
     .not()
     .isEmpty()
     .withMessage("Details field cannot be blank")
-    .isLength({ min: 30 })
+    .isLength({ min: 5 })
     .withMessage('deatils should contain brief description')
     .escape()
   ],

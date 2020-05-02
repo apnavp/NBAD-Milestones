@@ -59,7 +59,7 @@
         </div>
         <div class="form_div">
           <label id="when">Date and time</label>
-          <input type="text" id="dateAndTime" placeholder="mm/dd/yyyy, hh:mm" name="dateAndTime" >
+          <input type="datetime-local" id="dateAndTime" placeholder="mm/dd/yyyy, hh:mm" name="dateAndTime" >
           <% if(pageData[3]) { %>
         <div class="alert alert-danger">
           <%= pageData[3].msg %>
@@ -67,8 +67,8 @@
         <%}%>
         </div>
         <div class="form_div">
-          <label id="where">Details</label>
-          <input type="text" id="Details" placeholder="Location" name="details" >
+          <label id="details">Details</label>
+          <textarea rows="8" id="Details" placeholder="Details of the event" name="details" ></textarea>
           <% if(pageData[4]) { %>
         <div class="alert alert-danger">
           <%= pageData[4].msg %>

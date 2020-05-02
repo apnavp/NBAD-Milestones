@@ -78,3 +78,10 @@ $RECYCLE.BIN/
 
 cobertura.xml
 # End of https://www.gitignore.io/api/macos,linux,windows,vapor
+milestone 4.zip
+*.zip
+milestone 5/milestone4_createDB.txt
+~$lestone4Info.docx
+milestone5_create_db.txt
+milestone 5/Milestone5Info.pdf
+milestone 5/Milestone4Info.pdf

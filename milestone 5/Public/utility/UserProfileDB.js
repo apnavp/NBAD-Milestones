@@ -1,20 +1,14 @@
 ﻿var mongoose = require('mongoose');
-
+var moment = require("moment");
 var connection = require('./connectionDB.js');
-
-
 var Schema = mongoose.Schema;
 var userConnectionsSchema = new Schema({
   UserID: String,
   connectionID: String,
   RSVP: String
 });
-
-
 var connectionDB = mongoose.model('connections', connection.connectionSchema);
 var userConnectionsDB = mongoose.model('userConnections', userConnectionsSchema);
-
-
 module.exports.getUserProfile = function (UserID) {
   return new Promise(resolve => {
     resolve(userConnectionsDB.find({
@@ -23,9 +17,7 @@ module.exports.getUserProfile = function (UserID) {
       return allConnections;
     }));
   });
-
 };
-
 module.exports.updateRSVP = function (connectionID, UserID, rsvp) {
   return new Promise(resolve => {
     resolve(userConnectionsDB.findOneAndUpdate({
@@ -38,11 +30,8 @@ module.exports.updateRSVP = function (connectionID, UserID, rsvp) {
       return allConnections;
     }));
   });
-
 };
-
 module.exports.addRSVP = function (connectionID, UserID, rsvp) {
-
   return new Promise(resolve => {
     resolve(userConnectionsDB.find({
       UserID: UserID,
@@ -53,7 +42,6 @@ module.exports.addRSVP = function (connectionID, UserID, rsvp) {
           UserID: UserID,
           connectionID: connectionID,
           RSVP: rsvp
-
         }
         var data = new userConnectionsDB(addObject)
         data.save()
@@ -61,9 +49,7 @@ module.exports.addRSVP = function (connectionID, UserID, rsvp) {
       }
     }))
   });
-
 };
-
 module.exports.removeConnection = function (connectionID, UserID) {
   return new Promise(resolve => {
     resolve(userConnectionsDB.findOneAndDelete({
@@ -74,21 +60,22 @@ module.exports.removeConnection = function (connectionID, UserID) {
     }));
   });
 }
-
 module.exports.addConnection = async function (connection, UserID) {
   var ans = connection.connection_category.slice(0, 2).toUpperCase();
   ans += Math.random().toString(36).slice(5);
   var bns = ans.slice(0, 4);
   console.log("in random" + ans + "  " + bns);
   console.log(connection.details);
-
+  var date = connection.dateAndTime
+  var f_date_time = moment(date).format('MMMM Do YYYY, h:mm a');
+  console.log("this is formated date" + f_date_time);
   var newConnection = new connectionDB({
     connectionID: bns,
     connection_name: connection.connection_name,
     connection_category: connection.connection_category,
     hosted_by: UserID,
     start_location: connection.start_location,
-    dateAndTime: connection.dateAndTime,
+    dateAndTime: f_date_time,
     details: connection.details,
     imageurl: "../assets/images/man.png"
   });
@@ -99,5 +86,4 @@ module.exports.addConnection = async function (connection, UserID) {
   } else {
     console.log("Connection Adding failed");
   }
-
 }
