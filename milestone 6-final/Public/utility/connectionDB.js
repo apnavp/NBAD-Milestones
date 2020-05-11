@@ -17,6 +17,8 @@ var connectionSchema = new Schema({
   imageurl: String
 });
 
+
+
 // data storing for database start for all categories and topics
 
 var connectionDB = mongoose.model('connections', connectionSchema);

@@ -15,6 +15,7 @@ var connections = require('./routes/connections');
 var about = require('./routes/about');
 var connection = require('./routes/connection');
 var index = require('./routes/index');
+var signup = require('./routes/signup');
 var contact = require('./routes/contact');
 var newConnection = require('./routes/newConnection');
 var ProfileController = require('./Controller/ProfileController.js');
@@ -37,6 +38,7 @@ app.use(session({
 //custom route implementation
 
 // paths for index,connection,connections,abbout,contact,newConnection,Savedconnection start
+
 app.use('/newConnection', newConnection);
 app.use('/connections', connections);
 app.use('/connection', connection);
@@ -44,6 +46,7 @@ app.use('/savedconnections', ProfileController);
 app.use('/about', about);
 app.use('/contact', contact);
 app.use('/login', UserController);
+app.use('/signup', signup);
 app.use('/*', index);
 // paths for index,connection,connections,abbout,contact,newConnection,Savedconnection end
 

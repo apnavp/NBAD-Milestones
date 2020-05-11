@@ -2,139 +2,140 @@
 <html>
 
 <head>
-  <meta charset="UTF-8">
-  <title>Sign Up</title>
-  <link href="/assets/stylesheets/style.css" rel="stylesheet" type="text/css" />
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <link href="/assets/stylesheets/style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-  <!-- Header start for New connection -->
-  <%- include ('partials/header.ejs') %>
-  <!-- Header end for New connection -->
+    <!-- Header start for New connection -->
+    <%- include ('partials/header.ejs') %>
+    <!-- Header end for New connection -->
 
-  <!-- navigation start for New connection -->
-  <%- include ('partials/navigation.ejs') %>
-  <!-- navigation end for New connection -->
+    <!-- navigation start for New connection -->
+    <%- include ('partials/navigation.ejs') %>
+    <!-- navigation end for New connection -->
 
-  <!-- main start for New connection -->
-  <main>
-    <section>
-      <%if(inserted){%>
-      <div class="alert alert-success div_login" role="alert">
-        Connection added successfully <a href="connections" class="alert-link">Connections</a>. Follow the link.
-      </div>
-      <%}%>
-      <form id="contact-for" class="form_nc" method="POST" action="newConnection">
+    <!-- main start for New connection -->
+    <main>
+        <section>
+            <%if(inserted){%>
+            <div class="alert alert-success div_login" role="alert">
+                New account added successfully <a href="login" class="alert-link">login</a>. Follow the link.
+            </div>
+            <%}%>
+      <form id="contact-for" class="form_nc" method="POST" action="signup">
         <!-- <div class="form_format"> -->
             <div class="form_div">
                 <label id="pass1">Password</label>
                 <input type="text" id="pass1" name="password1" placeholder="Password here" >
                <!-- <textarea rows="8" id="Details" placeholder="Details of the event" name="details" ></textarea> -->
-                <% if(pageData[5]) { %>
-              <div class="alert alert-danger">
-                <%= pageData[5].msg %>
-              </div>
-              <%}%>
+                <% if(pageData[0]) { %>
+            <div class="alert alert-danger">
+                <%= pageData[0].msg %>
+            </div>
+            <%}%>
               </div>
 
               <div class="form_div">
-                <label id="city">Re-enter password1</label>
+                <label id="pass2">Re-enter Password</label>
                 <input type="text" id="pass2" name="password2" placeholder="Password here" >
                <!-- <textarea rows="8" id="Details" placeholder="Details of the event" name="details" ></textarea> -->
-                <% if(pageData[5]) { %>
-              <div class="alert alert-danger">
-                <%= pageData[5].msg %>
-              </div>
-              <%}%>
+                <% if(pageData[1]) { %>
+            <div class="alert alert-danger">
+                <%= pageData[1].msg %>
+            </div>
+            <%}%>
               </div>
 
 
             <div class="form_div">
           <label id="First Name">First Name</label>
           <input id="First Name" type="text" name="fname" placeholder="First Name Here">
-          <% if(pageData[0]) { %>
-      <div class="alert alert-danger">
-        <%= pageData[0].msg %>
-      </div>
-      <% } %>
-      </div>
-      <div class="form_div">
-        <label id="Last Name">Last Name</label>
-        <input id="Last Name" type="text" name="lname" placeholder="last Name Here">
-        <% if(pageData[1]) { %>
-        <div class="alert alert-danger">
-          <%= pageData[1].msg %>
-        </div>
-        <%}%>
+          <% if(pageData[2]) { %>
+            <div class="alert alert-danger">
+                <%= pageData[2].msg %>
+            </div>
+            <% } %>
+            </div>
+
+            <div class="form_div">
+                <label id="Last Name">Last Name</label>
+                <input id="Last Name" type="text" name="lname" placeholder="last Name Here">
+                <% if(pageData[3]) { %>
+                <div class="alert alert-danger">
+                    <%= pageData[3].msg %>
+                </div>
+                <%}%>
         </div>
         <div class="form_div">
           <label id="Email">Email Address</label>
           <input id="Email" type="text" placeholder="Email Address here"  name="email" >
-          <% if(pageData[2]) { %>
-        <div class="alert alert-danger">
-          <%= pageData[2].msg %>
-        </div>
-        <%}%>
+          <% if(pageData[4]) { %>
+                <div class="alert alert-danger">
+                    <%= pageData[4].msg %>
+                </div>
+                <%}%>
         </div>
         <div class="form_div">
           <label id="address1">Address Feild </label>
           <input type="text" id="address" name="address1" placeholder="Email Address here" >
-          <% if(pageData[3]) { %>
-        <div class="alert alert-danger">
-          <%= pageData[3].msg %>
-        </div>
-        <%}%>
+          <% if(pageData[5]) { %>
+                <div class="alert alert-danger">
+                    <%= pageData[5].msg %>
+                </div>
+                <%}%>
         </div>
         <div class="form_div">
           <label id="address2">Address Feild </label>
           <input type="text" id="address2" name="address2" placeholder="Appartment number here" >
-          <% if(pageData[4]) { %>
-        <div class="alert alert-danger">
-          <%= pageData[4].msg %>
-        </div>
-        <%}%>
+          <% if(pageData[6]) { %>
+                <div class="alert alert-danger">
+                    <%= pageData[6].msg %>
+                </div>
+                <%}%>
         </div>
         <div class="form_div">
           <label id="city">City</label>
           <input type="text" id="city" name="city" placeholder="City here" >
          <!-- <textarea rows="8" id="Details" placeholder="Details of the event" name="details" ></textarea> -->
-          <% if(pageData[5]) { %>
-        <div class="alert alert-danger">
-          <%= pageData[5].msg %>
-        </div>
-        <%}%>
+          <% if(pageData[7]) { %>
+                <div class="alert alert-danger">
+                    <%= pageData[7].msg %>
+                </div>
+                <%}%>
         </div>
         <div class="form_div">
             <label id="State">State</label>
             <input type="text" id="city" name="state" placeholder="State here" >
            <!-- <textarea rows="8" id="Details" placeholder="Details of the event" name="details" ></textarea> -->
-            <% if(pageData[5]) { %>
-          <div class="alert alert-danger">
-            <%= pageData[5].msg %>
-          </div>
-          <%}%>
+            <% if(pageData[8]) { %>
+                <div class="alert alert-danger">
+                    <%= pageData[8].msg %>
+                </div>
+                <%}%>
           </div>
           <div class="form_div">
             <label id="post code">Postal code</label>
             <input type="text" id="postcode" name="postcode" placeholder="Postal code here" >
            <!-- <textarea rows="8" id="Details" placeholder="Details of the event" name="details" ></textarea> -->
-            <% if(pageData[5]) { %>
-          <div class="alert alert-danger">
-            <%= pageData[5].msg %>
-          </div>
-          <%}%>
+            <% if(pageData[9]) { %>
+                <div class="alert alert-danger">
+                    <%= pageData[9].msg %>
+                </div>
+                <%}%>
           </div>
           <div class="form_div">
             <label id="country">Country</label>
             <input type="text" id="country" name="country" placeholder="Country here" >
            <!-- <textarea rows="8" id="Details" placeholder="Details of the event" name="details" ></textarea> -->
-            <% if(pageData[5]) { %>
-          <div class="alert alert-danger">
-            <%= pageData[5].msg %>
+            <% if(pageData[10]) { %>
+                <div class="alert alert-danger">
+                    <%= pageData[10].msg %>
+                </div>
+                <%}%>
           </div>
-          <%}%>
-          </div>
-          <input type="submit" class="submit_bttn" value="submit" />
+          <input type="submit" class="submit_bttn" value="Create new account" />
       </form>
     </section>
   </main>
@@ -142,7 +143,7 @@
 
   <!-- footer start for New connection -->
   <%- include ('partials/footer.ejs') %>
-        <!-- footer end for New connection -->
+                <!-- footer end for New connection -->
 </body>
 
 </html>
