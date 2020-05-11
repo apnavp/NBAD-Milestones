@@ -2,7 +2,8 @@
 var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
-var userProfileDB = require('../utility/UserProfileDB.js')
+var userProfileDB = require('../utility/UserProfileDB.js');
+var userDbUtil = require('../utility/userDB');
 const {
     check,
     validationResult,
@@ -27,6 +28,13 @@ router.get('/', function (request, response) {
 
 router.post('/', urlencodedParser,
     [
+        check("userID")
+        .trim()
+        .not()
+        .isEmpty()
+        .withMessage("User ID be blank")
+        .escape(),
+
         check("password1")
         .trim()
         .not()
@@ -170,6 +178,9 @@ router.post('/', urlencodedParser,
                 let countryErrors = errors.find(val => {
                     return val.param == "country";
                 });
+                let userErrors = errors.find(val => {
+                    return val.param == "userID";
+                });
                 let errorObject = [
                     pass1Errors,
                     pass2Errors,
@@ -181,7 +192,8 @@ router.post('/', urlencodedParser,
                     cityErrors,
                     stateErrors,
                     postErrors,
-                    countryErrors
+                    countryErrors,
+                    userErrors
                 ];
                 console.log(errorObject);
 
@@ -197,7 +209,7 @@ router.post('/', urlencodedParser,
                 if (request.body != undefined) {
                     console.log("call to adduser");
                     console.log(request.body);
-                     await userProfileDB.addUser(request.body).then(function () {
+                     await userDbUtil.addUser(request.body).then(function () {
                          inserted = true;
                         response.render('signup', {
                             pageData: [],

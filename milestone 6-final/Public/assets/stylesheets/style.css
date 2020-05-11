@@ -264,9 +264,14 @@ input {
 }
 
 .submit_bttn {
-  background-color: #000000;
+  margin-left: 30%;
+  padding: 8px 16px;
+  border: none;
+  background: #000000;
   color: #038CB8;
-  float: right;
+  text-transform: uppercase;
+  letter-spacing: .09em;
+  border-radius: 2px;
   width: 325px;
 }
 
@@ -344,4 +349,11 @@ textarea {
 select {
   width: 325px;
   height: 30px;
+}
+
+.form_su{
+  display: flex;
+
+    flex-wrap: wrap;
+    margin-bottom: auto;
 }
