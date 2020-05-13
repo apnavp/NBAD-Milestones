@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <title>New Connections</title>
   <link href="/assets/stylesheets/style.css" rel="stylesheet" type="text/css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
@@ -24,7 +25,7 @@
         Connection added successfully <a href="connections" class="alert-link">Connections</a>. Follow the link.
       </div>
       <%}%>
-      <form id="contact-for" class="form_nc" method="POST" action="newConnection">
+      <form id="contact-for" class="form_nc" method="POST" action="newConnection"  >
         <!-- <div class="form_format"> -->
         <div class="form_div">
           <label id="Topic">Name of event</label>
@@ -84,6 +85,10 @@
         </div>
         <%}%>
         </div>
+        <!-- <div class="form_div">
+          <label id="Image">Image</label>
+          <input type="file" id="Image" placeholder="Details of the event" name="image"  >
+        </div> -->
           <input type="submit" class="submit_bttn" value="submit" />
       </form>
     </section>

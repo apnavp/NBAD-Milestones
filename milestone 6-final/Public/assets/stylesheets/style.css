@@ -134,6 +134,7 @@ footer {
 }
 
 .li_category {
+  width: fit-content;
   float: none;
   flex-direction: column;
   display: flex;
@@ -356,4 +357,23 @@ select {
 
     flex-wrap: wrap;
     margin-bottom: auto;
+}
+
+a {
+  text-decoration: none;
+  position: relative;
+}
+
+a:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  border-bottom: 2px solid #038CB8;
+  transition: 0.4s;
+}
+
+a:hover:after {
+  width: 100%;
 }

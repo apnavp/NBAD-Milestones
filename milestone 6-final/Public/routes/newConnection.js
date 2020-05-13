@@ -2,18 +2,23 @@
 var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
-var userProfileDB = require('../utility/UserProfileDB.js')
+var userProfileDB = require('../utility/UserProfileDB.js');
+
+
+
 const {
   check,
   validationResult,
   body
 } = require("express-validator");
 var urlencodedParser = bodyParser.urlencoded({
-  extended: false
+  extended: true
 });
 // express app,router and utility requires end
 // Routing for newConnection start
 var inserted = null;
+
+
 router.get('/', function (request, response) {
   console.log("here inside new connection GET");
   if (request.session.theUser) {
@@ -30,6 +35,7 @@ router.get('/', function (request, response) {
     });
   }
 });
+
 router.post('/', urlencodedParser,
   [
     check("connection_name")
@@ -135,6 +141,7 @@ router.post('/', urlencodedParser,
         });
       } else {
         if (request.body != undefined) {
+          console.log(request.body);
           await userProfileDB.addConnection(request.body, request.session.theUser.firstName).then(function () {
             inserted = true;
             response.render('newConnection', {
